@@ -1,0 +1,18 @@
+version: "3"
+
+name: digital-stores
+
+services:
+  authServiceDB:
+    container_name: AuthDB
+    image: postgres:alpine3.16
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_DB}
+    volumes:
+      - /services/Auth/postgres_data:/var/lib/postgresql/data
+    ports:
+      - ${PG_PORT}:${PG_PORT}
+
+

@@ -13,6 +13,8 @@ class JWTSettings(BaseModel):
     private_key: Path = BASE_DIR / "certs" / "private.pem"
     public_key: Path = BASE_DIR / "certs" / "public.pem"
     algorithm: str = "RS256"
+    access_token_expires_in: int = 5
+    refresh_token_expires_in: int = 30
 
 
 class Settings(BaseSettings):

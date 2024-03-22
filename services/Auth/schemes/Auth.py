@@ -1,15 +1,18 @@
 from pydantic import BaseModel, Field
 
 
-class User(BaseModel):
-    username: str
+class SignUp(BaseModel):
+    username: str = Field(max_length=50)
     email: str = Field(max_length=80)
+    password: str = Field(min_length=10)
 
 
-class RegisterUser(User):
-    password: str = Field(min_length=8)
+class SignIn(BaseModel):
+    username: str = Field(max_length=50)
+    password: str = Field(min_length=10)
 
 
-class LoginUser(User):
-    pass
+class UserPayload(BaseModel):
+    username: str = Field(max_length=50)
+    token: str
 

@@ -23,3 +23,8 @@ class UserInDataBase(BaseModel):
     email: str = Field(max_length=80)
     hashed_password: str = Field(min_length=10)
 
+
+class UserWithToken(BaseModel):
+    user_id: int
+    refresh_token: str
+

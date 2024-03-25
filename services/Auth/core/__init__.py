@@ -1,2 +1,2 @@
 from models.UserDB import User
-from models.UserToken import UserToken
+from models.UserTokenDB import UserToken

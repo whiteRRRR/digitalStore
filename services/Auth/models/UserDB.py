@@ -4,7 +4,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import Integer, String, Text
 
 if TYPE_CHECKING:
-    from UserToken import UserToken
+    from UserByToken import UserToken
 
 
 class User(Base):

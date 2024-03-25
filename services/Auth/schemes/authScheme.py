@@ -16,3 +16,10 @@ class UserPayload(BaseModel):
     username: str = Field(max_length=50)
     token: str
 
+
+class UserInDataBase(BaseModel):
+    id: int
+    username: str = Field(max_length=50)
+    email: str = Field(max_length=80)
+    hashed_password: str = Field(min_length=10)
+

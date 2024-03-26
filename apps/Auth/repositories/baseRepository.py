@@ -8,7 +8,7 @@ class BaseRepository:
         self.model = model
 
     async def create(self, schema):
-        new_obj = self.model(schema.model_dump())
+        new_obj = self.model(**schema.model_dump())
 
         self.session.add(new_obj)
         await self.session.commit()

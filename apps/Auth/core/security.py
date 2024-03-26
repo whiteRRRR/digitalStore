@@ -9,8 +9,9 @@ from core.config import settings
 class PasswordSecurity:
 
     @staticmethod
-    async def get_hash_password(password) -> bytes:
-        hash_password = hashpw(password, gensalt())
+    async def get_hash_password(password: bytes) -> bytes:
+        gen_salt = gensalt()
+        hash_password = hashpw(password, gen_salt)
         return hash_password
 
     @staticmethod

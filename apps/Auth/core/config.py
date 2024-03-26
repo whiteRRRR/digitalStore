@@ -1,8 +1,11 @@
-from pydantic import BaseSettings, BaseModel
+from pydantic import BaseModel
+from pydantic_settings import BaseSettings
 from os import getenv
+from dotenv import load_dotenv
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\.env')
 
 
 class DataBaseSettings(BaseModel):

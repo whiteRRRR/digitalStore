@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from baseRepository import BaseRepository
+from .baseRepository import BaseRepository
 from models.userTokenDB import UserToken
 
 

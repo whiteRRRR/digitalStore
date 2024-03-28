@@ -9,12 +9,11 @@ class SignUp(BaseModel):
 
 class SignIn(BaseModel):
     username: str = Field(max_length=50)
-    password: str = Field(min_length=10)
+    password: bytes = Field(min_length=10)
 
 
 class UserPayload(BaseModel):
     username: str = Field(max_length=50)
-    token: str
 
 
 class UserInDataBase(BaseModel):
@@ -28,3 +27,7 @@ class UserWithToken(BaseModel):
     user_id: int
     refresh_token: str
 
+
+class UserWithoutPassword(BaseModel):
+    username: str = Field(max_length=50)
+    email: str = Field(max_length=80)

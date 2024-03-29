@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from schemes.authScheme import UserPayload
+from schemes.userScheme import UserPayload
 from bcrypt import hashpw, checkpw, gensalt
 from jwt import encode, decode
 from typing import Any

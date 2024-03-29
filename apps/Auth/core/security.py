@@ -34,7 +34,7 @@ class JwtSecurity:
         expire = now + timedelta(minutes=expire_minutes)
         copy_payload.update({"exp": expire, "iat": now})
 
-        encoded_jwt = encode(payload, private_key, algorithm)
+        encoded_jwt = encode(copy_payload, private_key, algorithm)
         return encoded_jwt
 
     @staticmethod

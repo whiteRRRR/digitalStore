@@ -44,7 +44,7 @@ class JwtSecurity:
             algorithm: str = settings.jwt_settings.algorithm,
             expire_days: int = settings.jwt_settings.refresh_token_expires_in
     ) -> str:
-        copy_payload = payload.dict()
+        copy_payload = payload.model_dump()
         now = datetime.utcnow()
         expire = now + timedelta(days=expire_days)
         copy_payload.update({"exp": expire, "iat": now})
@@ -55,7 +55,7 @@ class JwtSecurity:
     @staticmethod
     async def decode_jwt(
             token: str,
-            public_key: str = settings.jwt_settings.public_key,
+            public_key: str = settings.jwt_settings.public_key.read_text(),
             algorithm: str = settings.jwt_settings.algorithm,
     ) -> Any:
 

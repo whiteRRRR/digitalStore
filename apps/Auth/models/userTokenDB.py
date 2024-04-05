@@ -11,7 +11,7 @@ class UserToken(Base):
     __tablename__ = 'user_token'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    user_id: Mapped[int] = mapped_column(ForeignKey('user.id'))
+    user_id: Mapped[int] = mapped_column(ForeignKey('user.id', ondelete='CASCADE'))
     refresh_token: Mapped[str] = mapped_column(Text)
 
     user: Mapped["User"] = relationship(back_populates="user_token")

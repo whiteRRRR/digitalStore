@@ -11,7 +11,7 @@ load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\.env')
 
 
 class DataBaseSettings(BaseModel):
-    database_url: str = getenv("DATABASE_URL")
+    database_url: str = getenv("DATABASE_URL_AUTH")
 
 
 class JWTSettings(BaseModel):

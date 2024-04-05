@@ -20,3 +20,8 @@ class UserWithToken(BaseModel):
 class UserWithoutPassword(BaseModel):
     username: str = Field(max_length=50)
     email: str = Field(max_length=80)
+
+
+class UserChangePassword(BaseModel):
+    old_password: bytes = Field(min_length=10)
+    new_password: bytes = Field(min_length=10)

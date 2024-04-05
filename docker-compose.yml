@@ -7,12 +7,23 @@ services:
     container_name: AuthDB
     image: postgres:alpine3.16
     environment:
-      POSTGRES_USER: ${PG_USER}
-      POSTGRES_PASSWORD: ${PG_PASSWORD}
-      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER_AUTH}
+      POSTGRES_PASSWORD: ${PG_PASSWORD_AUTH}
+      POSTGRES_DB: ${PG_DB_AUTH}
     volumes:
       - ./apps/Auth/postgres_data:/var/lib/postgresql/data
     ports:
-      - ${PG_PORT}:${PG_PORT}
+      - ${PG_PORT_AUTH}:${PG_PORT_AUTH}
 
+  CategoryServiceDB:
+    container_name: CategoryDB
+    image: postgres:alpine3.16
+    environment:
+      POSTGRES_USER: ${PG_USER_CATEGORY}
+      POSTGRES_PASSWORD: ${PG_PASSWORD_CATEGORY}
+      POSTGRES_DB: ${PG_DB_CATEGORY}
+    volumes:
+      - ./apps/Category/postgres_data:/var/lib/postgresql/data
+    ports:
+      - ${PG_PORT_CATEGORY}:${PG_PORT_CATEGORY}
 

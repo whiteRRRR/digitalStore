@@ -25,3 +25,7 @@ class UserWithoutPassword(BaseModel):
 class UserChangePassword(BaseModel):
     old_password: bytes = Field(min_length=10)
     new_password: bytes = Field(min_length=10)
+
+
+class UserEmail(BaseModel):
+    email: str

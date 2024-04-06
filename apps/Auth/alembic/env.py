@@ -31,7 +31,7 @@ from dotenv import load_dotenv
 from os import getenv
 load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\.env')
 
-db_url = getenv('DATABASE_URL')
+db_url = getenv('DATABASE_URL_AUTH')
 config.set_main_option("sqlalchemy.url", db_url)
 
 

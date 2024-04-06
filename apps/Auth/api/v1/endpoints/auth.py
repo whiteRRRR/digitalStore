@@ -12,6 +12,7 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 @router.post("/sign-up/", status_code=status.HTTP_201_CREATED)
 async def sign_up(user_data: SignUp, session: AsyncSession = Depends(connect_database)) -> str:
+    # Change
     user_repository = UserRepository(session)
     auth_repository = AuthRepository(session)
     auth_service = AuthService(auth_repository, user_repository)
@@ -21,6 +22,7 @@ async def sign_up(user_data: SignUp, session: AsyncSession = Depends(connect_dat
 
 @router.post("/sign-in/")
 async def sign_in(user_data: SignIn, response: Response, session: AsyncSession = Depends(connect_database)):
+    # Change
     user_repository = UserRepository(session)
     auth_repository = AuthRepository(session)
     auth_service = AuthService(auth_repository, user_repository)

@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from schemes.userScheme import UserPayload
+from schemes.userScheme import UserPayload, UserEmail
 from bcrypt import hashpw, checkpw, gensalt
 from jwt import encode, decode
 from typing import Any
@@ -50,6 +50,21 @@ class JwtSecurity:
         copy_payload.update({"exp": expire, "iat": now})
 
         encoded_jwt = encode(copy_payload, private_key, algorithm)
+        return encoded_jwt
+
+    @staticmethod
+    async def create_secret_key(
+            payload: UserEmail,
+            private_key: str = settings.jwt_settings.private_key.read_text(),
+            algorithm: str = settings.jwt_settings.algorithm,
+            expire_minutes: int = settings.jwt_settings.access_token_expires_in
+    ):
+        copy_payload = payload.model_dump()
+        now = datetime.utcnow()
+        expire = now + timedelta(days=expire_minutes)
+        copy_payload.update({"exp": expire, "iat": now})
+        encoded_jwt = encode(copy_payload, private_key, algorithm)
+
         return encoded_jwt
 
     @staticmethod

@@ -11,8 +11,8 @@ class User(Base):
     __tablename__ = 'user'
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    username: Mapped[str] = mapped_column(String(50))
-    email: Mapped[str] = mapped_column(String(80))
+    username: Mapped[str] = mapped_column(String(50), unique=True)
+    email: Mapped[str] = mapped_column(String(80), unique=True)
     hashed_password: Mapped[bytes] = mapped_column(LargeBinary)
 
     user_token: Mapped["UserToken"] = relationship(back_populates="user")

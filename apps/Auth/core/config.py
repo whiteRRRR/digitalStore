@@ -5,10 +5,12 @@ from os import getenv
 from dotenv import load_dotenv
 from pathlib import Path
 
+load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\apps\\Auth\\.env')
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 API_V1_PREFIX = "/api/v1"
-
-load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\.env')
+SERVER_HOST = getenv("SERVER_HOST")
 
 
 class DataBaseSettings(BaseModel):
@@ -21,9 +23,9 @@ class EmailSettings(BaseModel):
     mail_from: str = getenv("EMAIL_FROM")
     mail_port: int = getenv("EMAIL_PORT")
     mail_server: str = getenv("EMAIL_SERVER")
-    mail_starttls: bool = getenv("EMAIL_STARTTLS"),
-    mail_ssl_tls: bool = getenv("EMAIL_SSL_TLS"),
-    use_credentials: bool = getenv("USE_CREDENTIALS"),
+    mail_starttls: bool = getenv("EMAIL_STARTTLS")
+    mail_ssl_tls: bool = getenv("EMAIL_SSL_TLS")
+    use_credentials: bool = getenv("USE_CREDENTIALS")
     validate_certs: bool = getenv("VALIDATE_CERTS")
 
     email_conf: ConnectionConfig = ConnectionConfig(

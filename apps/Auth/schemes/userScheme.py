@@ -27,5 +27,9 @@ class UserChangePassword(BaseModel):
     new_password: bytes = Field(min_length=10)
 
 
+class UserResetPassword(BaseModel):
+    new_password: bytes = Field(min_length=10)
+
+
 class UserEmail(BaseModel):
     email: str

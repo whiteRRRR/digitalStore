@@ -5,7 +5,7 @@ from os import getenv
 from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv('D:\\Projects\\Python\\FAST API\\digitalStore\\apps\\Auth\\.env')
+load_dotenv('apps\\Auth\\.env')
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent

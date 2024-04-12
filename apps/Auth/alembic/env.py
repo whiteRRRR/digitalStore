@@ -29,7 +29,7 @@ target_metadata = Base.metadata
 
 from dotenv import load_dotenv
 from os import getenv
-load_dotenv('apps\\Auth\\.env')
+load_dotenv('./apps/Auth/.env')
 
 db_url = getenv('DATABASE_URL_AUTH')
 config.set_main_option("sqlalchemy.url", db_url)

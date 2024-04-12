@@ -5,7 +5,7 @@ from os import getenv
 from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv('apps\\Auth\\.env')
+load_dotenv('./apps/Auth/.env')
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,7 +39,7 @@ class EmailSettings(BaseModel):
         USE_CREDENTIALS=use_credentials,
         VALIDATE_CERTS=validate_certs
     )
-
+print(BASE_DIR)
 
 class JWTSettings(BaseModel):
     private_key: Path = BASE_DIR / "certs" / "private.pem"

@@ -3,7 +3,13 @@ version: "3"
 name: digital-stores
 
 services:
-  authServiceDB:
+  auth_service:
+    container_name: Auth
+    build: ./apps/Auth
+    depends_on:
+      - auth_service_db
+
+  auth_service_db:
     container_name: AuthDB
     image: postgres:alpine3.16
     environment:
@@ -14,16 +20,3 @@ services:
       - ./apps/Auth/postgres_data:/var/lib/postgresql/data
     ports:
       - ${PG_PORT_AUTH}:${PG_PORT_AUTH}
-
-  CategoryServiceDB:
-    container_name: CategoryDB
-    image: postgres:alpine3.16
-    environment:
-      POSTGRES_USER: ${PG_USER_CATEGORY}
-      POSTGRES_PASSWORD: ${PG_PASSWORD_CATEGORY}
-      POSTGRES_DB: ${PG_DB_CATEGORY}
-    volumes:
-      - ./apps/Category/postgres_data:/var/lib/postgresql/data
-    ports:
-      - ${PG_PORT_CATEGORY}:${PG_PORT_CATEGORY}
-

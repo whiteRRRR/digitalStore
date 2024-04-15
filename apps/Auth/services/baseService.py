@@ -1,7 +1,3 @@
-from repositories import baseRepository
-from repositories.baseRepository import BaseRepository
-
-
 class BaseService:
     def __init__(self, repository):
         self.repository = repository

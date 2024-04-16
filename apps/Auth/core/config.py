@@ -42,7 +42,7 @@ class EmailSettings(BaseModel):
         USE_CREDENTIALS=use_credentials,
         VALIDATE_CERTS=validate_certs
     )
-print(BASE_DIR)
+
 
 class JWTSettings(BaseModel):
     private_key: Path = BASE_DIR / "certs" / "private.pem"

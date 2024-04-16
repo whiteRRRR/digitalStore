@@ -5,6 +5,9 @@ class BaseService:
     async def add(self, scheme):
         return await self.repository.create(scheme)
 
+    async def get_all(self):
+        return await self.repository.get_all()
+
     async def get_by_id(self, id: int):
         return await self.repository.read_by_id(id)
     
@@ -13,3 +16,4 @@ class BaseService:
     
     async def delete_by_id(self, id: int):
         return await self.repository.delete_by_id(id)
+    

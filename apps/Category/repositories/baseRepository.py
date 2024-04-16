@@ -14,6 +14,15 @@ class BaseRepository:
         await self.session.refresh(new_obj)
         return new_obj
     
+    async def read_all(self):
+        stmt = await self.session.execute(
+            select(
+                self.model
+            )
+        )
+        obj_list = stmt.scalars().all()
+        return obj_list
+    
     async def read_by_id(self, id: int):
         stmt = await self.session.execute(
             select(

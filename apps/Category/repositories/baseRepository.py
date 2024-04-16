@@ -36,31 +36,27 @@ class BaseRepository:
         return obj_info
     
     async def update_by_id(self, id: int, scheme):
-        try:
-            await self.session.execute(
-                update(
-                    self.model
-                ).where(
-                    self.model.id == id
-                ).values(
-                    scheme.model_dump()
-                )
+        await self.session.execute(
+            update(
+                self.model
+            ).where(
+                self.model.id == id
+            ).values(
+                scheme.model_dump()
             )
-            await self.session.commit()
-            return "Success full updated"
-        except Exception:
-            raise Exception("Error")
+        )
+        await self.session.commit()
+        return "Success full updated"
+
 
     async def delete_by_id(self, id: int):
-        try:
-            await self.session.execute(
-                delete(
-                    self.model
-                ).where(
-                    self.model.id == id
-                )
+        await self.session.execute(
+            delete(
+                self.model
+            ).where(
+                self.model.id == id
             )
-            return "Success full deleted item"
-        except Exception:
-            raise Exception("Error")
+        )
+        await self.session.commit()
+        return "Success full deleted item"
         

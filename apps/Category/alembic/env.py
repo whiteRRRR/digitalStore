@@ -4,7 +4,7 @@ from logging.config import fileConfig
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
-
+from dotenv import load_dotenv
 from alembic import context
 
 # this is the Alembic Config object, which provides
@@ -18,9 +18,13 @@ if config.config_file_name is not None:
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-target_metadata = None
+from core.database import Base
+from core.config import settings, dotenv_path
+
+config.set_main_option("sqlalchemy.url", settings.database.database_url)
+target_metadata = Base.metadata
+load_dotenv(dotenv_path)
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:

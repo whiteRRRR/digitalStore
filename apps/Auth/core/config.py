@@ -1,32 +1,35 @@
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings
 from fastapi_mail import ConnectionConfig
-from os import getenv
+from os import getenv, path
 from dotenv import load_dotenv
 from pathlib import Path
 
-load_dotenv('apps\\Auth\\.env')
+
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 API_V1_PREFIX = "/api/v1"
 SERVER_HOST = getenv("SERVER_HOST")
 
+dotenv_path = path.join(BASE_DIR, '.env')
+load_dotenv(dotenv_path)
+
 
 class DataBaseSettings(BaseModel):
-    database_url: str = getenv("DATABASE_URL_AUTH", "")
+    database_url: str = getenv("DATABASE_URL_AUTH")    
 
 
 class EmailSettings(BaseModel):
-    mail_username: str = getenv("EMAIL_USERNAME", "")
-    mail_password: str = getenv("EMAIL_PASSWORD", "")
-    mail_from: str = getenv("EMAIL_FROM", "")
-    mail_port: int = int(getenv("EMAIL_PORT", 0))
-    mail_server: str = getenv("EMAIL_SERVER", "")
-    mail_starttls: bool = getenv("EMAIL_STARTTLS", "").lower() == "true"  
-    mail_ssl_tls: bool = getenv("EMAIL_SSL_TLS", "").lower() == "true"  
-    use_credentials: bool = getenv("USE_CREDENTIALS", "").lower() == "true"  
-    validate_certs: bool = getenv("VALIDATE_CERTS", "").lower() == "true"  
+    mail_username: str = getenv("EMAIL_USERNAME")
+    mail_password: str = getenv("EMAIL_PASSWORD")
+    mail_from: str = getenv("EMAIL_FROM")
+    mail_port: int = getenv("EMAIL_PORT")
+    mail_server: str = getenv("EMAIL_SERVER")
+    mail_starttls: bool = getenv("EMAIL_STARTTLS")  
+    mail_ssl_tls: bool = getenv("EMAIL_SSL_TLS") 
+    use_credentials: bool = getenv("USE_CREDENTIALS")  
+    validate_certs: bool = getenv("VALIDATE_CERTS")  
 
     email_conf: ConnectionConfig = ConnectionConfig(
         MAIL_USERNAME=mail_username,

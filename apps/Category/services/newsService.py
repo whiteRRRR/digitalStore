@@ -17,7 +17,8 @@ class NewsService(BaseService):
             raise Exception("category not created")
 
     async def get_all_category(self):
-        await self.get_all()
+        categories = await self.get_all()
+        return categories
     
     async def delete_category_by_name(self, name: str) -> str:
         try:

@@ -6,6 +6,8 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+API_V1_PREFIX = "/api/v1"
+
 dotenv_path = path.join(BASE_DIR, ".env")
 load_dotenv(dotenv_path)
 

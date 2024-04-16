@@ -17,11 +17,11 @@ class NewsService(BaseService):
             raise Exception("category not created")
 
     async def get_all_category(self):
-        await self.get_all_category()
+        await self.get_all()
     
     async def delete_category_by_name(self, name: str) -> str:
         try:
-            category_info = self.news_repository.read_by_name(name)
+            category_info = await self.news_repository.read_by_name(name)
             await self.delete_by_id(category_info.id)
             return "Category deleted successfull"
         except Exception:

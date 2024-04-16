@@ -22,7 +22,7 @@ async def create_category(news: NewsScheme, session: AsyncSession = Depends(conn
 
     return await news_service.create_category(news)
 
-@router.delete("delete/{name}", status_code=status.HTTP_200_OK)
+@router.delete("/delete/{name}", status_code=status.HTTP_200_OK)
 async def delete_category_by_name(name: str, session: AsyncSession = Depends(connection_base)):
     news_repository = NewsRepository(session)
     news_service = NewsService(news_repository)

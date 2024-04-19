@@ -10,7 +10,7 @@ class ProductService(BaseService):
     
     async def create_category(self, product_scheme: ProductCategoryScheme) -> str:
         try:
-            await self.add(product_scheme: ProductCategoryScheme)
+            await self.add(product_scheme)
             return "News category created successfull"
         except BadRequestException:
             raise BadRequestException("category not created")

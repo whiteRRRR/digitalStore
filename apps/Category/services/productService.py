@@ -1,15 +1,16 @@
 from services.baseService import BaseService
 from core.exceptions import BadRequestException
 from repositories.productRepository import ProductCategory
+from schemes.productScheme import ProductCategoryScheme
 
 class ProductService(BaseService):
     def __init__(self, product_repository: ProductCategory):
         self.product_repository = product_repository
         super().__init__(product_repository)
     
-    async def create_category(self, news_scheme: NewsScheme) -> str:
+    async def create_category(self, product_scheme: ProductCategoryScheme) -> str:
         try:
-            await self.add(news_scheme)
+            await self.add(product_scheme: ProductCategoryScheme)
             return "News category created successfull"
         except BadRequestException:
             raise BadRequestException("category not created")

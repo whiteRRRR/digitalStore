@@ -6,7 +6,7 @@ from repositories.productRepository import ProductRepository
 from services.productService import ProductService
 
 
-router = APIRouter(prefix="/product_category", tags=["product"])
+router = APIRouter(prefix="/product_category", tags=["category"])
 
 @router.get("/", status_code=status.HTTP_200_OK)
 async def get_all(session: AsyncSession = Depends(connection_base)):

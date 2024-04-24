@@ -1,13 +1,19 @@
-FROM python:3.12.3
+FROM python:latest
+
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /apps/Auth
 
-COPY [".", "."]
-
-RUN apt-get update && apt-get install vim -y && apt-get install nmap -y
-RUN .venv/Scripts/activate
+RUN pip install --upgrade pip
 RUN pip install poetry
+RUN poetry env use python
 RUN poetry install
-RUN poetry shell
+EXPOSE 8000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+COPY ./ .
+
+CMD ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+
+
+

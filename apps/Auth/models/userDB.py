@@ -14,5 +14,6 @@ class User(Base):
     username: Mapped[str] = mapped_column(String(50), unique=True)
     email: Mapped[str] = mapped_column(String(80), unique=True)
     hashed_password: Mapped[bytes] = mapped_column(LargeBinary)
-
+    role: Mapped[str] = mapped_column(String(20), default="user", server_default="user")
+    
     user_token: Mapped["UserToken"] = relationship(back_populates="user")

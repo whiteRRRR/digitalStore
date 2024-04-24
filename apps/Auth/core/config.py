@@ -10,7 +10,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 API_V1_PREFIX = "/api/v1"
-SERVER_HOST = getenv("SERVER_HOST")
+SERVER_HOST = getenv("HOST_SERVER")
 
 dotenv_path = path.join(BASE_DIR, '.env')
 load_dotenv(dotenv_path)

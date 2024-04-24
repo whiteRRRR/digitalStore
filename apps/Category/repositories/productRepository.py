@@ -4,8 +4,8 @@ from repositories.baseRepository import BaseRepository
 from models.productDB import ProductCategory
 
 
-class ProductRepository(BaseRepository):
-    def __init__(self, ProductCategory, session: AsyncSession) -> None:
+class ProductCategoryRepository(BaseRepository):
+    def __init__(self, session: AsyncSession) -> None:
         super().__init__(ProductCategory, session)
 
     async def read_by_name(self, name: str):

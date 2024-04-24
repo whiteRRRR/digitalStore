@@ -52,7 +52,7 @@ class UserService(BaseService):
         fm = FastMail(settings.email.email_conf)
         email_payload = UserEmail(email=email)
         secret_key = await security.jwt_security.create_secret_key(email_payload)
-        forgot_url_link = f"{SERVER_HOST}//forgot-password//{secret_key}//"
+        forgot_url_link = f"{SERVER_HOST}/forgot-password/{secret_key}/"
         email_body = {
             "company_name": settings.email.mail_from,
             "reset_link": forgot_url_link,

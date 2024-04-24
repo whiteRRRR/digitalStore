@@ -1,10 +1,10 @@
 from services.baseService import BaseService
 from core.exceptions import BadRequestException
-from repositories.productRepository import ProductCategory
+from repositories.productRepository import ProductCategoryRepository
 from schemes.productScheme import ProductCategoryScheme
 
-class ProductService(BaseService):
-    def __init__(self, product_repository: ProductCategory):
+class ProductCategoryService(BaseService):
+    def __init__(self, product_repository: ProductCategoryRepository):
         self.product_repository = product_repository
         super().__init__(product_repository)
     
@@ -19,7 +19,7 @@ class ProductService(BaseService):
         categories = await self.get_all()
         if categories:
             return categories
-        raise BadRequestException("category not deleted")
+        raise BadRequestException("categories not found")
     
     async def delete_category_by_name(self, name: str) -> str:
         try:

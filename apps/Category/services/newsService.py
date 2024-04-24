@@ -1,11 +1,11 @@
 from services.baseService import BaseService
-from repositories.newsRepository import NewsRepository
+from repositories.newsRepository import NewsCategoryRepository
 from schemes.newsScheme import NewsScheme
 from core.exceptions import BadRequestException
 
 
-class NewsService(BaseService):
-    def __init__(self, news_repository: NewsRepository) -> None:
+class NewsCategoryService(BaseService):
+    def __init__(self, news_repository: NewsCategoryRepository) -> None:
         self.news_repository = news_repository
         super().__init__(news_repository)
 

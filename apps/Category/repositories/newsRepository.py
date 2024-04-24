@@ -4,7 +4,7 @@ from repositories.baseRepository import BaseRepository
 from models.newsDB import NewsCategoryDB
 
 
-class NewsRepository(BaseRepository):
+class NewsCategoryRepository(BaseRepository):
     def __init__(self, session: AsyncSession) -> None:
         super().__init__(NewsCategoryDB, session)
 

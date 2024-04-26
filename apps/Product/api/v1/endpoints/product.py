@@ -6,7 +6,7 @@ from schemes.productScheme import ProductScheme
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-router = APIRouter(prefix="product/", tags=["product"])
+router = APIRouter(prefix="products/", tags=["product"])
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_product(scheme: ProductScheme, session: AsyncSession = Depends(connection_database)):

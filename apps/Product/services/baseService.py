@@ -1,4 +1,4 @@
-class BaseServices:
+class BaseService:
     def __init__(self, repository) -> None:
         self.repository = repository
 

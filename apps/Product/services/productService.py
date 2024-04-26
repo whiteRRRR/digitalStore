@@ -20,7 +20,7 @@ class ProductService(BaseService):
 
     async def delete_by_id(self, id: int):
         try:
-            await self.delete_by_id(id)
+            await self.repository.delete_by_id(id)
             return "Successful deleted"
         except BadRequestException:
             raise BadRequestException("Bad request")

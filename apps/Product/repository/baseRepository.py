@@ -1,13 +1,13 @@
 from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-
+from schemes.productScheme import ProductScheme
 
 class BaseRepository:
     def __init__(self, model, session: AsyncSession) -> None:
         self._model = model
         self._session = session
     
-    async def create(self, scheme):
+    async def create(self, scheme: ProductScheme):
         new_product = self._model(**scheme.model_dump())
         
         self._session.add(new_product)
@@ -36,7 +36,7 @@ class BaseRepository:
         product = stmt.scalar()
         return product
     
-    async def update_by_id(self, scheme, id: int):
+    async def update_by_id(self, scheme: ProductScheme, id: int):
         await self._session.execute(
             update(
                 self._model

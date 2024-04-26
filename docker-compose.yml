@@ -29,3 +29,17 @@ services:
     ports:
       - ${PG_PORT_CATEGORY}:${PG_PORT_CATEGORY}
     command: -p ${PG_PORT_CATEGORY}
+  
+
+  product_service_db:
+    container_name: productDB
+    image: postgres:alpine3.16
+    environment:
+      - POSTGRES_USER: ${PG_USER_PRODUCT} 
+      - POSTGRES_PASSWORD: ${PG_PASSWORD_PRODUCT}
+      - POSTGRES_DB: ${PG_DB_PRODUCT}
+    volumes:
+      - ./apps/Product/postgres_data:/var/lib/postgresql/data
+    ports:
+      - ${PG_PORT_PRODUCT}:${PG_PORT_PRODUCT}
+    command: -p ${PG_PORT_PRODUCT}

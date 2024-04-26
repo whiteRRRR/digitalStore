@@ -16,7 +16,7 @@ class ProductService(BaseService):
             raise BadRequestException("Bad request")
 
     async def get_all_product(self):
-        return self.repository.read_all()
+        return await self.repository.read_all()
 
     async def delete_by_id(self, id: int):
         try:

@@ -23,9 +23,9 @@ async def get_all(session: AsyncSession = Depends(connection_database)):
     return await service.get_all_product()
 
 @router.delete("/", status_code=status.HTTP_201_CREATED)
-async def delete_by_id(id, session: AsyncSession = Depends(connection_database)):
+async def delete_by_id(id: int, session: AsyncSession = Depends(connection_database)):
     repository = ProductRepository(session)
     service = ProductService(repository)
 
-    return service.delete_by_id(id)
+    return await service.delete_by_id(id)
     

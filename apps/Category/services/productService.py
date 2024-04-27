@@ -21,6 +21,12 @@ class ProductCategoryService(BaseService):
             return categories
         raise BadRequestException("categories not found")
     
+    async def get_by_name(self, name: str):
+        category = await self.product_repository.read_by_name(name)
+        if category:
+            return category
+        return "Not found category"
+    
     async def delete_category_by_name(self, name: str) -> str:
         try:
             category_info = await self.news_repository.read_by_name(name)
